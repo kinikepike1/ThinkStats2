@@ -68,7 +68,7 @@ class SurvivalFunction(object):
 
         returns: HazardFunction object
         """
-        lams = pd.Series(index=self.ts)
+        lams = pd.Series(index=self.ts, dtype=float)
 
         prev = 1.0
         for t, s in zip(self.ts, self.ss):
@@ -297,7 +297,7 @@ def EstimateHazardFunction(complete, ongoing, label='', verbose=False):
 
     at_risk = len(complete) + len(ongoing)
 
-    lams = pd.Series(index=ts)
+    lams = pd.Series(index=ts, dtype=float)
     for t in ts:
         ended = hist_complete[t]
         censored = hist_ongoing[t]
